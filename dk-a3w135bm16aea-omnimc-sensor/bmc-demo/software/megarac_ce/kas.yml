@@ -1,0 +1,153 @@
+header:
+  version: 17
+  includes:
+    - kas/machine.yml
+    - kas/bsp.yml
+
+repos:
+  # AMI MegaRAC CE OpenBMC (walnascar, tag CE-AMI202607, pinned to commit). kas
+  # writes bblayers.conf/local.conf, so AMI's TEMPLATECONF/openbmc-env flow is not
+  # used; fix-templateconf only stops oe-init-build-env erroring on the bad default
+  # .templateconf. Layer list mirrors meta-altera/meta-agilex3 template.
+  openbmc:
+    url: https://github.com/ocp-hm-openbmc-opf-ami/openbmc
+    tag: CE-AMI202607
+    path: openbmc
+    patches:
+      fix-templateconf:
+        repo: meta-custom
+        path: kas-patches/fix-templateconf.patch
+    layers:
+      meta:
+      meta-openembedded/meta-oe:
+      meta-openembedded/meta-python:
+      meta-openembedded/meta-networking:
+      meta-openembedded/meta-filesystems:
+      meta-phosphor:
+      # meta-arm + meta-security are required by the meta-agilex3 template (walnascar)
+      meta-arm/meta-arm:
+      meta-arm/meta-arm-bsp:
+      meta-arm/meta-arm-toolchain:
+      meta-intel-openbmc:
+      meta-security:
+
+  meta-core:
+    url: https://github.com/ocp-hm-openbmc-opf-ami/meta-core
+    tag: CE-AMI202607
+    path: meta-core
+    layers:
+      .:
+      meta-common:
+
+  meta-ami:
+    url: https://github.com/ocp-hm-openbmc-opf-ami/meta-ami
+    tag: CE-AMI202607
+    path: meta-ami
+    layers:
+      .:
+
+  # AMI consolidated Altera OpenBMC layer (walnascar main) — replaces the old
+  # in-tree meta-altera-openbmc. We enable the OpenBMC-integration sublayers only;
+  # the BSP comes from meta-altera-fpga below (not meta-altera/meta-altera-bsp) and
+  # board customisation from our meta-custom (not meta-agilex3/meta-custom).
+  meta-altera:
+    url: https://github.com/ocp-hm-openbmc-opf-ami/meta-altera.git
+    commit: 180d3bc6b9686b5c81b6e8167513b2e3bd8a61d4
+    path: meta-altera
+    layers:
+      .:
+      meta-common:
+      meta-agilex3:
+
+  # Altera BSP (our walnascar branch) — provides collection altera-bsp, a drop-in
+  # replacement for meta-altera/meta-altera-bsp. Pin to a commit once the branch
+  # is frozen.
+  meta-altera-fpga:
+    url: https://github.com/altera-innersource/applications.fpga.soc.meta-altera-fpga.git
+    branch: walnascar_megarac_ce
+    commit: 0b2d52f4ffd7a17011fce9e2c915f621215285c5
+    path: meta-altera-fpga
+    layers:
+      meta-altera-bsp:
+
+  meta-custom:
+    path: meta-custom
+
+local_conf_header:
+  distro: |
+    DISTRO = "openbmc-phosphor"
+
+  # Mirrors AMI local.conf.sample: meta-ami/conf/layer.conf injects debug-tweaks
+  # via AMI_CORE_FEATURES, but debug-tweaks is Poky-only and invalid in the
+  # phosphor distro, so drop it and use the phosphor equivalents instead.
+  image-features: |
+    EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
+    EXTRA_IMAGE_FEATURES += "allow-empty-password allow-root-login"
+
+  # Mirrors AMI local.conf.sample: meta-ami ships patches without Upstream-Status
+  # tags. patch-status runs in do_patch (not do_package_qa), so INSANE_SKIP can't
+  # clear it globally -> remove from ERROR_QA; keep per-recipe INSANE_SKIP for the
+  # libcap patch-status and libapisensor buildpaths findings.
+  qa: |
+    ERROR_QA:remove = "patch-status"
+    INSANE_SKIP:pn-libcap        += "patch-status"
+    INSANE_SKIP:pn-libcap-native += "patch-status"
+    INSANE_SKIP:pn-libapisensor  += "buildpaths"
+
+  boot-source: |
+    SSBL_BOOT_SOURCE ?= "mmc0"
+    KERNEL_BOOTARGS_SD_MMC ?= ""
+
+  device-tree: |
+    CUSTOM_UBOOT_DEVICE_TREE = "0"
+    CUSTOM_LINUX_DEVICE_TREE = "0"
+
+  # RBF file lives in meta-custom/recipes-fpga/fpga-bitstream/files/
+  fpga-bitstream: |
+    FPGA_ENABLE_CORE_PGM ?= "1"
+    FPGA_RBF_FILE ?= "baseline_hps_debug.core.rbf"
+
+  kernel-modules: |
+    KERNEL_MODULE_PROBECONF = "cfg80211"
+    module_conf_cfg80211 = "blacklist cfg80211"
+
+  # (A) mirrors AMI meta-agilex3/agilex5 local.conf.sample. (B) is ours.
+  # Not mirrored: AMI's BSP version masks (linux-socfpga-lts 6.12/6.6, u-boot v2024/
+  # v2025, ATF v2.11-2.13) — PREFERRED_VERSION picks our BSP and the rest pin a
+  # fixed SRCREV, so they parse offline and are never fetched.
+  bbmask: |
+    # (A) mirror AMI local.conf.sample
+    BBMASK += " meta-ami/.*/recipes-bsp/u-boot/.*"
+    BBMASK += " meta-core/meta-common/recipes-bsp/u-boot/.*"
+    BBMASK += " meta-ami/.*/recipes-kernel/linux/linux-onetree.*"
+    BBMASK += " meta-core/meta-common/recipes-kernel/linux/linux-onetree.*"
+    BBMASK += " meta-core/meta-common/recipes-security/sssd/sssd_%.bbappend"
+    BBMASK += " meta-ami/meta-common/recipes-network/network/static-mac-addr.bbappend"
+    BBMASK += " meta-core/meta-common/recipes-core/libpeci/libpeci_%.bbappend"
+    BBMASK += " meta-ami/meta-common/recipes-phosphor/fans/phosphor-pid-control_%.bbappend"
+    BBMASK += " meta-core/meta-common/recipes-phosphor/fans/phosphor-pid-control_%.bbappend"
+    # Mask -> recipe builds stock openbmc/intel-ipmi-oem (base .bb, ee27fe09), not
+    # AMI's EVB-only fork; sel-logger DEPENDS still resolves (base RPROVIDES it).
+    BBMASK += " meta-ami/meta-common/recipes-phosphor/ipmi/intel-ipmi-oem-ext.bbappend"
+    # (B) ours: recipes our meta-custom re-implements. Must mask (priority won't do)
+    # — meta-altera/meta-common's copies pull SRC_URI files (e.g. entity-config.json)
+    # shipped only by AMI's meta-agilex3/meta-custom bbappends, which we don't
+    # include; without the mask they hit a parse-time do_fetch checksum error.
+    BBMASK += " meta-altera/meta-common/recipes-phosphor/entity-config/"
+    BBMASK += " meta-altera/meta-common/recipes-phosphor/packagegroups/packagegroup-apps.bb"
+    BBMASK += " meta-altera/meta-common/recipes-phosphor/phase0-masks/"
+    # webui-vue: don't follow AMI's UI for now — its prebuilt UI needs git-lfs 3.x
+    # (webui-libraries), which we don't have on the build host. We build the UI via
+    # meta-custom (online npm), so mask AMI's LFS bbappends. Mask (not priority) is
+    # needed here too: bbappends apply regardless of BBFILE_PRIORITY.
+    BBMASK += " meta-ami/meta-common/recipes-phosphor/webui/webui-vue_%.bbappend"
+    BBMASK += " meta-core/meta-common/recipes-phosphor/webui/webui-vue_%.bbappend"
+
+  # Mirrors AMI local.conf.sample: ipk packaging + rm_work to trim build tmp.
+  package: |
+    PACKAGE_CLASSES ?= "package_ipk"
+    INHERIT += "rm_work"
+
+  build-params: |
+    PARALLEL_MAKE = "-j 8"
+    BB_NUMBER_THREADS = "8"

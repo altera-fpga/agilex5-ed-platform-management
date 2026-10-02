@@ -1,0 +1,62 @@
+header:
+  version: 17
+  includes:
+    - kas/machine.yml
+    - kas/bsp.yml
+
+repos:
+  # OpenBMC monorepo — bundles OE-core, meta-openembedded, bitbake, and
+  # meta-phosphor all under upstream-layers/.  LAYERSERIES_CORENAMES = "wrynose"
+  # which matches meta-altera-fpga wrynose branch.
+  openbmc:
+    url: https://github.com/openbmc/openbmc.git
+    commit: 1be9149a44dd758db2214114e700a24ffe5b4fd8
+    layers:
+      # OpenEmbedded Core (satisfies LAYERDEPENDS = "core" for meta-altera-bsp)
+      upstream-layers/openembedded-core/meta:
+      # meta-openembedded additional layers
+      upstream-layers/meta-openembedded/meta-oe:
+      upstream-layers/meta-openembedded/meta-python:
+      upstream-layers/meta-openembedded/meta-networking:
+      upstream-layers/meta-openembedded/meta-filesystems:
+      # OpenBMC BMC management services (Redfish, IPMI, phosphor-*)
+      meta-phosphor:
+
+  # Altera BSP — U-Boot, ATF, and Linux kernel for Agilex HPS
+  # Pinned to public rel/26.1.1 tag (workaround: SDM/XCVR temp read issue in newer BSP)
+  meta-altera-fpga:
+    url: https://github.com/altera-fpga/meta-altera-fpga.git
+    tag: QPDS26.1.1_REL_GSRD_PR
+    layers:
+      meta-altera-bsp:
+
+  # OpenBMC integration layer for Agilex 3 — machine config (agilex3_openbmc.conf)
+  meta-altera-openbmc:
+    path: meta-altera-openbmc
+
+  # Board-specific customisations
+  meta-custom:
+    path: meta-custom
+
+local_conf_header:
+  # OpenBMC distro — must be set explicitly (unlike yocto_linux which uses poky)
+  distro: |
+    DISTRO = "openbmc-phosphor"
+
+  boot-source: |
+    SSBL_BOOT_SOURCE ?= "mmc0"
+    KERNEL_BOOTARGS_SD_MMC ?= ""
+
+  device-tree: |
+    CUSTOM_UBOOT_DEVICE_TREE = "0"
+    CUSTOM_LINUX_DEVICE_TREE = "0"
+
+  # RBF file should be placed in meta-custom/recipes-fpga/fpga-bitstream/files/
+  fpga-bitstream: |
+    FPGA_ENABLE_CORE_PGM ?= "1"
+    FPGA_RBF_FILE ?= "baseline_hps_debug.core.rbf"
+
+  kernel-modules: |
+    KERNEL_MODULE_PROBECONF = "cfg80211"
+    module_conf_cfg80211 = "blacklist cfg80211"
+    

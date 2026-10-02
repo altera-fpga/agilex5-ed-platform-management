@@ -1,0 +1,427 @@
+//****************************************************************************
+//
+// SPDX-License-Identifier: MIT-0
+// SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+//
+//****************************************************************************
+//
+// baseline_top
+//
+//****************************************************************************
+
+`timescale 1 ps / 1 ps
+//
+`default_nettype none
+
+module baseline (
+    // Board PLL reference clock
+    input  wire         pll_refclk_100,
+    //
+    // User switches and LEDs
+    output wire [2-1:0] fpga_user_leds,
+    input  wire [1-1:0] fpga_user_push_buttons,
+    //
+    //HPS
+    //
+    // HPS EMIF
+    output wire         emif_hps_emif_mem_0_mem_ck_t,
+    output wire         emif_hps_emif_mem_0_mem_ck_c,
+    output wire         emif_hps_emif_mem_0_mem_cke,
+    output wire         emif_hps_emif_mem_0_mem_reset_n,
+    input  wire         emif_hps_emif_oct_0_oct_rzqin,
+    input  wire         emif_hps_emif_ref_clk_0_clk,
+    inout  wire [  3:0] emif_hps_emif_mem_0_mem_dqs_t,
+    inout  wire [  3:0] emif_hps_emif_mem_0_mem_dqs_c,
+    inout  wire [ 31:0] emif_hps_emif_mem_0_mem_dq,
+    output wire         emif_hps_emif_mem_0_mem_cs,
+    output wire [  5:0] emif_hps_emif_mem_0_mem_ca,
+    inout  wire [  3:0] emif_hps_emif_mem_0_mem_dmi,
+    // HPS_IO48 Peripherals
+    input  wire         hps_jtag_tck,
+    input  wire         hps_jtag_tms,
+    output wire         hps_jtag_tdo,
+    input  wire         hps_jtag_tdi,
+    output wire         hps_sdmmc_CCLK,
+    inout  wire         hps_sdmmc_CMD,
+    inout  wire         hps_sdmmc_D0,
+    inout  wire         hps_sdmmc_D1,
+    inout  wire         hps_sdmmc_D2,
+    inout  wire         hps_sdmmc_D3,
+    inout  wire         hps_usb1_DATA0,
+    inout  wire         hps_usb1_DATA1,
+    inout  wire         hps_usb1_DATA2,
+    inout  wire         hps_usb1_DATA3,
+    inout  wire         hps_usb1_DATA4,
+    inout  wire         hps_usb1_DATA5,
+    inout  wire         hps_usb1_DATA6,
+    inout  wire         hps_usb1_DATA7,
+    input  wire         hps_usb1_CLK,
+    output wire         hps_usb1_STP,
+    input  wire         hps_usb1_DIR,
+    input  wire         hps_usb1_NXT,
+    output wire         hps_emac2_TX_CLK,
+    input  wire         hps_emac2_RX_CLK,
+    output wire         hps_emac2_TX_CTL,
+    input  wire         hps_emac2_RX_CTL,
+    output wire         hps_emac2_TXD0,
+    output wire         hps_emac2_TXD1,
+    input  wire         hps_emac2_RXD0,
+    input  wire         hps_emac2_RXD1,
+    output wire         hps_emac2_TXD2,
+    output wire         hps_emac2_TXD3,
+    input  wire         hps_emac2_RXD2,
+    input  wire         hps_emac2_RXD3,
+    inout  wire         hps_emac2_MDIO,
+    output wire         hps_emac2_MDC,
+    input  wire         hps_uart0_RX,
+    output wire         hps_uart0_TX,
+    inout  wire         hps_i2c0_SDA,
+    inout  wire         hps_i2c0_SCL,
+    inout  wire         hps_i3c1_SDA,
+    inout  wire         hps_i3c1_SCL,
+    inout  wire         hps_gpio0_io0,
+    inout  wire         hps_gpio0_io1,
+    inout  wire         hps_gpio0_io11,
+    inout  wire         hps_gpio1_io3,
+    inout  wire         hps_gpio1_io4,
+    // OpenBMC sensor-board header
+    inout  wire         i3c_sda,
+    inout  wire         i3c_scl,
+    output wire         i3c_pu,
+    output wire         host_tx,
+    input  wire         host_rx,
+    inout  wire         acc_sda_sdi,
+    input  wire         acc_sa0_sdo,
+    output wire         acc_scl_spc,
+    output wire         acc_cs_n,
+    inout  wire         id_sd,
+    inout  wire         id_sc,
+    // Universal GPIO bank — 14 continuous fabric lines (ugpio[13:0]).
+    // Skips header GPIO10/AG21 (fan PWM) and GPIO12/AF23 (fan tach); see QSF map.
+    inout  wire [ 13:0] ugpio,
+    output wire         host_fpwm,
+    input  wire         fan_tach,
+    //
+    // HPS External Oscillator
+    input  wire         hps_osc_clk,
+    //
+    // External FPGA Reset
+    input  wire         fpga_reset_n
+);
+    // Constants
+    localparam LED_PIO_WIDTH = 32;
+    localparam BUTTONS_PIO_WIDTH = 32;
+
+    // Clock and Reset
+    wire sys_clk_100;
+    wire sys_clk_100_reset_n;
+
+    // Debounce logic to clean out push button glitches within 1ms
+    wire [BUTTONS_PIO_WIDTH-1:0] fpga_debounced_buttons;
+    wire [BUTTONS_PIO_WIDTH-1:0] fpga_push_buttons;
+
+    assign fpga_push_buttons = {
+        {BUTTONS_PIO_WIDTH - $size(fpga_user_push_buttons) {1'b0}}, fpga_user_push_buttons
+    };
+
+    debounce #(
+        .WIDTH        (32),
+        .POLARITY     ("LOW"),
+        .TIMEOUT      (10000),  // at 100MHz this is a debounce time of 1ms
+        .TIMEOUT_WIDTH(32)      // ceil(log2(TIMEOUT))
+    ) debounce_inst (
+        .clk     (sys_clk_100),
+        .reset_n (sys_clk_100_reset_n),
+        .data_in (fpga_push_buttons),
+        .data_out(fpga_debounced_buttons)
+    );
+    // Create a heartbeat counter
+    reg [22:0] heartbeat_count;
+    always @(posedge sys_clk_100) begin
+        if (!sys_clk_100_reset_n) begin
+            heartbeat_count <= '0;
+        end else begin
+            heartbeat_count <= heartbeat_count + 23'd1;
+        end
+    end
+
+    // Create a heartbeat LED
+    wire heartbeat_led;
+    assign heartbeat_led = heartbeat_count[22];
+
+    // LED PIO
+    wire [LED_PIO_WIDTH-1:0] fpga_leds;
+
+    // Drive the USER PIN LEDs to be the HPS LED outputs
+    // in addition to the heartbeat LED
+    assign fpga_user_leds = {heartbeat_led, fpga_leds[0]};
+
+    // Tie off all fabric to HPS interrupts
+    wire [30:0] fpga2hps_interrupts;
+    assign fpga2hps_interrupts = '0;
+
+    // Synchronize the reset request signal to system clock domain
+    // and loopback to the ack signals.
+    logic h2f_warm_reset_handshake_reset_ack;
+    logic h2f_warm_reset_handshake_reset_req;
+    altera_std_synchronizer #(
+        .depth(2)
+    ) h2f_warm_reset_handshake_reset_req_sync (
+        .clk    (sys_clk_100),
+        .reset_n(sys_clk_100_reset_n),
+        .din    (h2f_warm_reset_handshake_reset_req),
+        .dout   (h2f_warm_reset_handshake_reset_ack)
+    );
+
+    // OpenBMC sensor-board interfaces
+    wire hps_spim_mosi_o;
+    wire hps_spim_mosi_oe;
+    wire hps_spim_ss0_n_o;
+    wire hps_spim_clk_out_clk;
+    wire hps_uart1_tx;
+    wire hps_i2c1_clk_output_clk;
+    wire hps_i2c1_sda_oe;
+    wire hps_i2c1_clk_in;
+    wire hps_i2c1_sda_in;
+    wire hps_i3c0_scl_oe;
+    wire hps_i3c0_sda_oe;
+    wire hps_i3c0_scl_out;
+    wire hps_i3c0_sda_out;
+    wire hps_i3c0_scl_pullup_en;
+    wire hps_i3c0_sda_pullup_en;
+    wire hps_i3c0_scl_in_a;
+    wire hps_i3c0_sda_in_a;
+    // HPS EMAC0 I2C (open-drain), shared with I3C0 via OE mux below
+    wire hps_emac0_i2c_mac_scl_i;
+    wire hps_emac0_i2c_mac_scl_oe;
+    wire hps_emac0_i2c_mac_sda_i;
+    wire hps_emac0_i2c_mac_sda_oe;
+    // Mode select from bus_mode PIO (fabric_subsys), physical 0x20010090.
+    // Resets to 0 (I3C0, default); write 1 to switch to EMAC0-I2C.
+    wire i2c_mode_sel;
+    wire i3c_bus_scl_din;
+    wire i3c_bus_sda_din;
+    wire i3c_bus_scl_oe;
+    wire i3c_bus_sda_oe;
+    wire i3c_bus_scl_dout;
+    wire i3c_bus_sda_dout;
+
+    assign acc_sda_sdi = hps_spim_mosi_oe ? hps_spim_mosi_o : 1'bz;
+    assign acc_scl_spc = hps_spim_clk_out_clk;
+    assign acc_cs_n = hps_spim_ss0_n_o;
+    assign host_tx = hps_uart1_tx;
+
+    gpio u_id_sda (
+        .din   (1'b0),
+        .oe    (hps_i2c1_sda_oe),
+        .dout  (hps_i2c1_sda_in),
+        .pad_io(id_sd)
+    );
+
+    gpio u_id_scl (
+        .din   (1'b0),
+        .oe    (hps_i2c1_clk_output_clk),
+        .dout  (hps_i2c1_clk_in),
+        .pad_io(id_sc)
+    );
+
+    ///////////////////////////////////////////////////////////////////////////
+    // I3C0 / EMAC0-I2C OE mux onto shared sensor-board i3c_scl / i3c_sda.
+    // i2c_mode_sel: 0 = I3C0 owns the pins (default), 1 = EMAC0-I2C owns them.
+    // Static, software-driven select — not based on either controller's own
+    // signals, which aren't reliable mode indicators
+    ///////////////////////////////////////////////////////////////////////////
+    assign i3c_bus_scl_oe = i2c_mode_sel ? hps_emac0_i2c_mac_scl_oe : hps_i3c0_scl_oe;
+    assign i3c_bus_sda_oe = i2c_mode_sel ? hps_emac0_i2c_mac_sda_oe : hps_i3c0_sda_oe;
+    assign i3c_bus_scl_din = i2c_mode_sel ? 1'b0 : (hps_i3c0_scl_oe ? hps_i3c0_scl_out : 1'b0);
+    assign i3c_bus_sda_din = i2c_mode_sel ? 1'b0 : (hps_i3c0_sda_oe ? hps_i3c0_sda_out : 1'b0);
+    // i3c_pu follows I3C0 only; idle/disabled I3C0 leaves it hi-Z.
+    assign i3c_pu = hps_i3c0_sda_pullup_en ? 1'b1 : 1'bz;
+
+    gpio u_i3c_sda (
+        .din   (i3c_bus_sda_din),
+        .oe    (i3c_bus_sda_oe),
+        .dout  (i3c_bus_sda_dout),
+        .pad_io(i3c_sda)
+    );
+
+    gpio u_i3c_scl (
+        .din   (i3c_bus_scl_din),
+        .oe    (i3c_bus_scl_oe),
+        .dout  (i3c_bus_scl_dout),
+        .pad_io(i3c_scl)
+    );
+
+    // Both controllers always see the pad (needed for ACK / stretch)
+    assign hps_i3c0_scl_in_a = i3c_bus_scl_dout;
+    assign hps_i3c0_sda_in_a = i3c_bus_sda_dout;
+    assign hps_emac0_i2c_mac_scl_i = i3c_bus_scl_dout;
+    assign hps_emac0_i2c_mac_sda_i = i3c_bus_sda_dout;
+
+    // Placeholder for 10-bit temperature ADC input to fan controller.
+    logic [9:0] fan_temp_in_w;
+    assign fan_temp_in_w = '0;
+
+    // 14-bit bidir PIO — every export bit on a package pin (avoids QIS 13046/13049
+    // from floating internal tri-states on unused [31:14]).
+    // Renumbered vs Pi-header GPIO0–15: fabric 0–9 = header 0–9; fabric 10–13 =
+    // header 11,13,14,15 (header 10/12 = dedicated fan PWM/tach below).
+
+    // Baseline system Top module
+    baseline_top u_baseline_top (
+        // Board PLL reference clock
+        .pll_refclk_100_clk                    (pll_refclk_100),
+        // External FPGA reset
+        .fpga_reset_n_reset_n                  (fpga_reset_n),
+        // System clock and reset to FPGA
+        .system_clk_clk                        (sys_clk_100),
+        .system_reset_n_reset_n                (sys_clk_100_reset_n),
+        // OpenBMC sensor-board interfaces
+        .hps_spim_miso_i                       (acc_sa0_sdo),
+        .hps_spim_mosi_o                       (hps_spim_mosi_o),
+        .hps_spim_mosi_oe                      (hps_spim_mosi_oe),
+        .hps_spim_ss_in_n                      (1'b1),
+        .hps_spim_ss0_n_o                      (hps_spim_ss0_n_o),
+        .hps_spim_ss1_n_o                      (),
+        .hps_spim_ss2_n_o                      (),
+        .hps_spim_ss3_n_o                      (),
+        .hps_spim_clk_out_clk                  (hps_spim_clk_out_clk),
+        .hps_uart1_cts_n                       (1'b0),
+        .hps_uart1_dcd_n                       (1'b1),
+        .hps_uart1_dsr_n                       (1'b1),
+        .hps_uart1_dtr_n                       (),
+        .hps_uart1_out1_n                      (),
+        .hps_uart1_out2_n                      (),
+        .hps_uart1_ri_n                        (1'b1),
+        .hps_uart1_rts_n                       (),
+        .hps_uart1_rx                          (host_rx),
+        .hps_uart1_tx                          (hps_uart1_tx),
+        .hps_i2c1_clk_in_clk                   (hps_i2c1_clk_in),
+        .hps_i2c1_clk_output_clk               (hps_i2c1_clk_output_clk),
+        .hps_i2c1_sda_i                        (hps_i2c1_sda_in),
+        .hps_i2c1_sda_oe                       (hps_i2c1_sda_oe),
+        .hps_i3c0_scl_in_a                     (hps_i3c0_scl_in_a),
+        .hps_i3c0_scl_oe                       (hps_i3c0_scl_oe),
+        .hps_i3c0_sda_in_a                     (hps_i3c0_sda_in_a),
+        .hps_i3c0_sda_oe                       (hps_i3c0_sda_oe),
+        .hps_i3c0_scl_out                      (hps_i3c0_scl_out),
+        .hps_i3c0_sda_out                      (hps_i3c0_sda_out),
+        .hps_i3c0_scl_pullup_en                (hps_i3c0_scl_pullup_en),
+        .hps_i3c0_sda_pullup_en                (hps_i3c0_sda_pullup_en),
+        .hps_emac0_i2c_mac_scl_i               (hps_emac0_i2c_mac_scl_i),
+        .hps_emac0_i2c_mac_scl_oe              (hps_emac0_i2c_mac_scl_oe),
+        .hps_emac0_i2c_mac_sda_i               (hps_emac0_i2c_mac_sda_i),
+        .hps_emac0_i2c_mac_sda_oe              (hps_emac0_i2c_mac_sda_oe),
+        //
+        // HPS Clock
+        .hps_io_hps_osc_clk                    (hps_osc_clk),
+        // HPS reset to the fabric
+        .h2f_warm_reset_handshake_reset_req    (h2f_warm_reset_handshake_reset_req),
+        .h2f_warm_reset_handshake_reset_ack    (h2f_warm_reset_handshake_reset_ack),
+        // HPS EMIF interface
+        .emif_hps_emif_mem_ck_0_mem_ck_t       (emif_hps_emif_mem_0_mem_ck_t),
+        .emif_hps_emif_mem_ck_0_mem_ck_c       (emif_hps_emif_mem_0_mem_ck_c),
+        .emif_hps_emif_mem_0_mem_cke           (emif_hps_emif_mem_0_mem_cke),
+        .emif_hps_emif_mem_reset_n_mem_reset_n (emif_hps_emif_mem_0_mem_reset_n),
+        .emif_hps_emif_mem_0_mem_dqs_t         (emif_hps_emif_mem_0_mem_dqs_t),
+        .emif_hps_emif_mem_0_mem_dqs_c         (emif_hps_emif_mem_0_mem_dqs_c),
+        .emif_hps_emif_mem_0_mem_dq            (emif_hps_emif_mem_0_mem_dq),
+        .emif_hps_emif_oct_0_oct_rzqin         (emif_hps_emif_oct_0_oct_rzqin),
+        .emif_hps_emif_ref_clk_0_clk           (emif_hps_emif_ref_clk_0_clk),
+        .emif_hps_emif_mem_0_mem_cs            (emif_hps_emif_mem_0_mem_cs),
+        .emif_hps_emif_mem_0_mem_ca            (emif_hps_emif_mem_0_mem_ca),
+        .emif_hps_emif_mem_0_mem_dmi           (emif_hps_emif_mem_0_mem_dmi),
+        // HPS Peripherals
+        .hps_io_jtag_tck                       (hps_jtag_tck),
+        .hps_io_jtag_tms                       (hps_jtag_tms),
+        .hps_io_jtag_tdo                       (hps_jtag_tdo),
+        .hps_io_jtag_tdi                       (hps_jtag_tdi),
+        .hps_io_emac2_tx_clk                   (hps_emac2_TX_CLK),
+        .hps_io_emac2_rx_clk                   (hps_emac2_RX_CLK),
+        .hps_io_emac2_tx_ctl                   (hps_emac2_TX_CTL),
+        .hps_io_emac2_rx_ctl                   (hps_emac2_RX_CTL),
+        .hps_io_emac2_txd0                     (hps_emac2_TXD0),
+        .hps_io_emac2_txd1                     (hps_emac2_TXD1),
+        .hps_io_emac2_rxd0                     (hps_emac2_RXD0),
+        .hps_io_emac2_rxd1                     (hps_emac2_RXD1),
+        .hps_io_emac2_txd2                     (hps_emac2_TXD2),
+        .hps_io_emac2_txd3                     (hps_emac2_TXD3),
+        .hps_io_emac2_rxd2                     (hps_emac2_RXD2),
+        .hps_io_emac2_rxd3                     (hps_emac2_RXD3),
+        .hps_io_mdio2_mdio                     (hps_emac2_MDIO),
+        .hps_io_mdio2_mdc                      (hps_emac2_MDC),
+        .hps_io_sdmmc_cclk                     (hps_sdmmc_CCLK),
+        .hps_io_sdmmc_cmd                      (hps_sdmmc_CMD),
+        .hps_io_sdmmc_data0                    (hps_sdmmc_D0),
+        .hps_io_sdmmc_data1                    (hps_sdmmc_D1),
+        .hps_io_sdmmc_data2                    (hps_sdmmc_D2),
+        .hps_io_sdmmc_data3                    (hps_sdmmc_D3),
+        .hps_io_i2c0_sda                       (hps_i2c0_SDA),
+        .hps_io_i2c0_scl                       (hps_i2c0_SCL),
+        .hps_io_i3c1_sda                       (hps_i3c1_SDA),
+        .hps_io_i3c1_scl                       (hps_i3c1_SCL),
+        .hps_io_uart0_rx                       (hps_uart0_RX),
+        .hps_io_uart0_tx                       (hps_uart0_TX),
+        .hps_io_usb1_clk                       (hps_usb1_CLK),
+        .hps_io_usb1_stp                       (hps_usb1_STP),
+        .hps_io_usb1_dir                       (hps_usb1_DIR),
+        .hps_io_usb1_nxt                       (hps_usb1_NXT),
+        .hps_io_usb1_data0                     (hps_usb1_DATA0),
+        .hps_io_usb1_data1                     (hps_usb1_DATA1),
+        .hps_io_usb1_data2                     (hps_usb1_DATA2),
+        .hps_io_usb1_data3                     (hps_usb1_DATA3),
+        .hps_io_usb1_data4                     (hps_usb1_DATA4),
+        .hps_io_usb1_data5                     (hps_usb1_DATA5),
+        .hps_io_usb1_data6                     (hps_usb1_DATA6),
+        .hps_io_usb1_data7                     (hps_usb1_DATA7),
+        .hps_io_gpio0                          (hps_gpio0_io0),
+        .hps_io_gpio1                          (hps_gpio0_io1),
+        .hps_io_gpio11                         (hps_gpio0_io11),
+        .hps_io_gpio27                         (hps_gpio1_io3),
+        .hps_io_gpio28                         (hps_gpio1_io4),
+        // HPS USB1 (3.1) interface (not used, tied off or left unconnected in this baseline design)
+        .usb31_io_vbus_det                     (1'b0),
+        .usb31_io_flt_bar                      (1'b0),
+        .usb31_io_usb_ctrl                     (),
+        .usb31_io_usb31_id                     (1'b0),
+        .usb31_phy_refclk_p_clk                (1'b0),
+        .usb31_phy_rx_serial_n_i_rx_serial_n   (1'b0),
+        .usb31_phy_rx_serial_p_i_rx_serial_p   (1'b0),
+        .usb31_phy_pma_cpu_clk_clk             (1'b0),
+        .usb31_phy_reconfig_rst_reset          (1'b0),
+        .usb31_phy_reconfig_clk_clk            (1'b0),
+        .usb31_phy_reconfig_slave_address      ('0),
+        .usb31_phy_reconfig_slave_byteenable   ('0),
+        .usb31_phy_reconfig_slave_readdatavalid(),
+        .usb31_phy_reconfig_slave_read         (1'b0),
+        .usb31_phy_reconfig_slave_write        (1'b0),
+        .usb31_phy_reconfig_slave_readdata     (),
+        .usb31_phy_reconfig_slave_writedata    ('0),
+        .usb31_phy_reconfig_slave_waitrequest  (),
+        //
+        // Interrupts
+        .f2h_interrupts_irq                    (fpga2hps_interrupts),
+        //
+        // LEDs, Push Buttons and DIP Switches IOs
+        .user_leds_export                      (fpga_leds),
+        .user_push_buttons_export              (fpga_debounced_buttons),
+        //
+        // NiosV subsys PIO
+        .niosv_pio_in_export                   ('0),
+        .niosv_pio_out_export                  (),
+        // I3C0 / EMAC0-I2C mode select (bus_mode PIO, fabric_subsys):
+        // Writable from Linux/U-Boot at 0x20010090 — resets to 0
+        // (I3C0, default) — write 1 to select EMAC0-I2C.
+        .i3c_mode_selection_export             (i2c_mode_sel),
+        // Fan controller conduit — three separate named ports (see axi_fan_control_hw.tcl)
+        // fan_io_pwm     → host_fpwm  (AG21, 3.3-V LVCMOS)
+        // fan_io_tacho   ← fan_tach   (AF23, 3.3-V LVCMOS)
+        // fan_io_temp_in ← 10-bit external temperature ADC
+        .fan_io_pwm                            (host_fpwm),
+        .fan_io_tacho                          (fan_tach),
+        .fan_io_temp_in                        (fan_temp_in_w),
+        // Universal GPIO — 14-bit Avalon PIO @ 0x200100A0 (bidir, level IRQ)
+        .pio_export                            (ugpio)
+    );
+
+endmodule

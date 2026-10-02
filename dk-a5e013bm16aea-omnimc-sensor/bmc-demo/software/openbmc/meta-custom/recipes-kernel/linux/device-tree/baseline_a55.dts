@@ -1,0 +1,144 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (C) 2025, Altera Corporation
+ */
+/dts-v1/;
+#include "socfpga_agilex5_socdk_013b.dts"
+
+/ {
+    /* Fixed 100 MHz reference clock for ADI AXI fan controller. */
+    fan_ctrl_clk: fan-ctrl-clk {
+        compatible = "fixed-clock";
+        #clock-cells = <0>;
+        clock-frequency = <100000000>;
+    };
+
+    soc@0 {
+        /*
+         * ADI AXI fan controller at LWH2F 0x20000000, GIC SPI 18.
+         * temp_in[9:0] is tied to 0 in the fabric (placeholder); use devmem
+         * writes to PWM_WIDTH (0x20000084) to override the duty cycle manually.
+         */
+        axi_fan_control: axi-fan-control@20000000 {
+            compatible = "adi,axi-fan-control-1.00.a";
+            reg = <0x20000000 0x400>;
+            clocks = <&fan_ctrl_clk>;
+            interrupt-parent = <&intc>;
+            interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
+            pulses-per-revolution = <2>;
+        };
+
+        /*
+         * Universal GPIO interim — 14-bit bidir Avalon PIO (falling-edge IRQ).
+         * Address: LWH2F 0x20000000 + fabric offset 0x100A0 = 0x200100A0
+         * IRQ: fabric_subsys.pio_irq -> f2h_irq0_in #2 -> GIC SPI 19
+         *
+         * 14 lines: Linux/fabric GPIO0–13 → ugpio[13:0] → PIO export[13:0].
+         * Pi-header GPIO10 (PWM) and GPIO12 (tach) are on axi_fan_control,
+         * not this bank.
+         *
+         * Fabric | Pi-header GPIO | Ball
+         *   0–9  | GPIO0–9        | AG20 … AH18
+         *  10–13 | GPIO11,13–15   | AF22, AJ27, AK24, AH26
+         */
+        ugpio: gpio@200100a0 {
+            compatible = "altr,pio-1.0";
+            reg = <0x200100a0 0x10>;
+            interrupt-parent = <&intc>;
+            interrupts = <GIC_SPI 19 IRQ_TYPE_EDGE_RISING>;
+            altr,gpio-bank-width = <14>;
+            altr,interrupt-type = <IRQ_TYPE_EDGE_FALLING>;
+            #gpio-cells = <2>;
+            gpio-controller;
+            interrupt-controller;
+            #interrupt-cells = <2>;
+        };
+    };
+};
+
+/*
+ * Altera sensor board I3C sensors on HPS I3C0 (Pi-header balls AJ24/AJ23).
+ * P3T1755 (temp) and TSC1641 x2 (power meters) are native I3C devices.
+ * Shunt resistors are 0.1 ohm (100000 uOhm); driver default is 1000 uOhm,
+ * so shunt-resistor-micro-ohms must be set or current/power reads ~100x high.
+ */
+&i3c0 {
+    status = "okay";
+    #address-cells = <3>;
+    #size-cells = <0>;
+
+    /*
+     * Cap the I3C push-pull clock to 10 MHz (default 12.5 MHz).
+     * The TSC1641 powers up in I2C mode with a 50 ns spike filter (tLFP,
+     * DS14338 Table 8). The DesignWare driver sets t_CAS = 40 ns at 12.5 MHz,
+     * which is below the filter threshold, so the TSC1641 NAKs SETDASA.
+     * At 10 MHz t_CAS = 60 ns, which passes. Ref: DS14338 Table 8 (tLFP).
+     */
+    i3c-scl-hz = <10000000>;
+
+    /*
+     * assigned-address forces SETDASA instead of ENTDAA. The TSC1641s sit at
+     * the far end of the bus stub (pull-ups are at the P3T1755); during ENTDAA
+     * their open-drain PID edges are marginal and the controller misreads the
+     * PID. With SETDASA the controller drives the address and the TSC1641 only
+     * needs to ACK, which is reliable. P3T1755 still uses ENTDAA (short stub).
+     */
+
+    /* U3 — VH (heater) rail, static addr 0x42 */
+    tsc1641@42,208020a2001 {
+        reg = <0x42 0x0208 0x020a2001>;
+        assigned-address = <0x42>;
+        shunt-resistor-micro-ohms = <100000>;
+    };
+
+    /* U8 — VFAN (fan) rail, static addr 0x43 */
+    tsc1641@43,208020a3001 {
+        reg = <0x43 0x0208 0x020a3001>;
+        assigned-address = <0x43>;
+        shunt-resistor-micro-ohms = <100000>;
+    };
+};
+
+/*
+ * Altera sensor board accelerometer (ST IIS2DULPX) on HPS SPIM0 via spidev.
+ * SPIM0 is routed through the FPGA fabric to Pi-header balls AJ22/AH20/AJ20/AG23.
+ * No in-tree IIS2DULPX driver; rohm,dh2228fv is used to bind spidev without a
+ * kernel patch. The iis2dulpx-accel daemon identifies the part via WHO_AM_I (0x47).
+ */
+&spi0 {
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    accel@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;
+        spi-max-frequency = <5000000>;
+    };
+};
+
+/*
+ * UART1 routed through FPGA fabric to Pi-header balls AF24 (TX) / AG24 (RX).
+ * Used for the QT Py MCU on the sensor board. ttyS0 remains the boot console.
+ */
+/ {
+    aliases {
+        serial1 = &uart1;
+    };
+};
+
+&uart1 {
+    status = "okay";
+};
+
+/* Sensor board HAT ID EEPROM (CAT24C32 @ 0x50) on HPS I2C1. */
+&i2c1 {
+    status = "okay";
+    clock-frequency = <100000>;
+
+    eeprom@50 {
+        compatible = "atmel,24c32";
+        reg = <0x50>;
+        pagesize = <32>;
+    };
+};
