@@ -1,0 +1,35 @@
+# Standard Quartus generated directories
+/dni/
+/output_files/
+/qdb/
+/tmp-clearbox/
+/.qsys_edit/
+
+# IP generated subdirectories
+/ip/baseline_top/*
+!/ip/baseline_top/*.ip
+
+/ip/shell_subsys/*
+!/ip/shell_subsys/*.ip
+
+/ip/fabric_subsys/*
+!/ip/fabric_subsys/*.ip
+
+/ip/niosv_subsys/*
+!/ip/niosv_subsys/*.ip
+
+/ip/hps_subsys/*
+!/ip/hps_subsys/*.ip
+
+/baseline_top/
+/fabric_subsys/
+/shell_subsys/
+/niosv_subsys/
+/hps_subsys/
+/output_files/
+
+/sim_setup_baseline/
+
+*.qws
+baseline_assignment_defaults.qdf
+board.info

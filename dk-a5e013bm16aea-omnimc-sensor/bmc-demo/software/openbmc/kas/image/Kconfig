@@ -1,0 +1,10 @@
+menu "Image target selection"
+
+config OBMC_PHOSPHOR_IMAGE
+	bool "OpenBMC Phosphor Image"
+	default y
+	help
+	  Build the OpenBMC phosphor image (obmc-phosphor-image). This is the
+	  standard OpenBMC image providing Redfish, IPMI, and the bmcweb UI.
+
+endmenu
