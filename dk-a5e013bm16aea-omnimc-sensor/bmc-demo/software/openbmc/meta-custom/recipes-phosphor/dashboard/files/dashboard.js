@@ -451,7 +451,10 @@ let polling = false;
 // the event log change rarely, so refresh them only every SLOW_EVERY cycles and
 // reuse the cached result otherwise. This cuts ~6 requests off most cycles.
 let pollCycle = 0;
-const SLOW_EVERY = 10;
+// Event-log + OEM/EEPROM presence refresh cadence (in poll cycles). Kept low so
+// QT Py switch-fault alerts posted to the Redfish event log surface within a few
+// seconds during a live demo (SLOW_EVERY * pollMs ~= 6 s at the 2 s default).
+const SLOW_EVERY = 3;
 let lastOem = { heater: false, accel: false };
 let lastEeprom = { present: false, label: null };
 let lastLog = null;

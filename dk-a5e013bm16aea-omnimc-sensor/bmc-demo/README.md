@@ -34,7 +34,7 @@ Refer to the <a href=\"https://altera-fpga.github.io/latest/embedded-designs/agi
 ## Project Details
 
 - **Family**: Agilex 5
-- **Quartus Version**: 26.1.1
+- **Quartus Version**: 26.3
 - **Development Kit**: Agilex 5 FPGA E-Series 013B Development Kit DK-A5E013BM16AEA
 - **Device Part**: A5ED013BM16AE4SCS
 - **Category**: HPS
@@ -391,11 +391,11 @@ event: FALLING EDGE offset: 0 timestamp: [    2995.458810594]
 
 ## Hardware build
 **Prerequisites**
-- Altera Quartus Prime 26.1.1
+- Altera Quartus Prime 26.3
 - Python 3.11.5 (only required when using command line to build)
 
 ### Using Quartus GUI
-1. Launch Quartus Prime 26.1.1
+1. Launch Quartus Prime 26.3
 2. Open the design project. E.g top.qpf.
 3. Click the play button to compile the design.
 4. The compiled sof can be found in output_files folder of the project path.
@@ -587,6 +587,8 @@ while True:
 ```
 
 > All modules used are built into CircuitPython, so the `lib/` directory can be left empty. The USB serial console (`/dev/ttyACM0`) only shows `print()` output; the heater value is streamed on the hardware TX pin (monitor with `screen /dev/ttyUSB0 115200`).
+
+The simple firmware above is the **`v1-heater`** version (heater PWM only). A newer **`v2-rack`** firmware adds switch-triggered fault flagging (BMC/CDU/PSU profiles). For the full firmware files, the version compatibility table, the required `adafruit_bus_device` library, and the headless-Linux flashing procedure, see [`software/qtpy/README.md`](software/qtpy/README.md).
 
 ---
 

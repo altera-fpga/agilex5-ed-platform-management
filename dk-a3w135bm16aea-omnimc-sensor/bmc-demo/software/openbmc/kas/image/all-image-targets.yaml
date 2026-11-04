@@ -1,7 +1,0 @@
-header:
-  version: 17
-
-target:
-    - console-image-minimal
-    - gsrd-console-image
-    - core-image-minimal 
