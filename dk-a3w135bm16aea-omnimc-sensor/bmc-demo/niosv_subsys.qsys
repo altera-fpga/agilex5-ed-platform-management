@@ -11477,7 +11477,7 @@ Altera and sold by Altera or its authorized distributors.-->
       </altera:module>
     </altera:modules>
     <altera:connections>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_jtag_uart.avalon_jtag_slave">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_jtag_uart.avalon_jtag_slave">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00050040"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11500,7 +11500,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_f2sdram_address_span_extender.cntl">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_f2sdram_address_span_extender.cntl">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00050080"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11523,7 +11523,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_m.dm_agent">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_m.dm_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00040000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11546,7 +11546,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_onchip_memory.s1">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_onchip_memory.s1">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11569,7 +11569,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_pio_in.s1">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_pio_in.s1">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00050050"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11592,7 +11592,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_pio_out.s1">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_pio_out.s1">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00050060"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11615,7 +11615,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_m.timer_sw_agent">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_niosv_m.timer_sw_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00050000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11638,7 +11638,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.data_manager" altera:end="u_f2sdram_address_span_extender.windowed_slave">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.data_manager" altera:end="u_f2sdram_address_span_extender.windowed_slave">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x80000000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11661,7 +11661,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.instruction_manager" altera:end="u_niosv_m.dm_agent">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.instruction_manager" altera:end="u_niosv_m.dm_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00040000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11684,7 +11684,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_niosv_m.instruction_manager" altera:end="u_niosv_onchip_memory.s1">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_niosv_m.instruction_manager" altera:end="u_niosv_onchip_memory.s1">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11707,7 +11707,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_jtag_avalon_master.master" altera:end="u_f2sdram_address_span_extender.cntl">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_jtag_avalon_master.master" altera:end="u_f2sdram_address_span_extender.cntl">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x00050080"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11730,7 +11730,7 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="avalon" altera:version="26.1" altera:start="u_jtag_avalon_master.master" altera:end="u_f2sdram_address_span_extender.windowed_slave">
+      <altera:connection altera:kind="avalon" altera:version="26.3" altera:start="u_jtag_avalon_master.master" altera:end="u_f2sdram_address_span_extender.windowed_slave">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x80000000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -11753,24 +11753,24 @@ Altera and sold by Altera or its authorized distributors.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="TRUE"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_reset.clk"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_jtag_uart.clk"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_m.clk"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_pio_in.clk"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_pio_out.clk"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_jtag_avalon_master.clk"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_onchip_memory.clk1"></altera:connection>
-      <altera:connection altera:kind="clock" altera:version="26.1" altera:start="u_niosv_clock.out_clk" altera:end="u_f2sdram_address_span_extender.clock"></altera:connection>
-      <altera:connection altera:kind="interrupt" altera:version="26.1" altera:start="u_niosv_m.platform_irq_rx" altera:end="u_jtag_uart.irq">
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_reset.clk"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_jtag_uart.clk"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_m.clk"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_pio_in.clk"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_pio_out.clk"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_jtag_avalon_master.clk"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_niosv_onchip_memory.clk1"></altera:connection>
+      <altera:connection altera:kind="clock" altera:version="26.3" altera:start="u_niosv_clock.out_clk" altera:end="u_f2sdram_address_span_extender.clock"></altera:connection>
+      <altera:connection altera:kind="interrupt" altera:version="26.3" altera:start="u_niosv_m.platform_irq_rx" altera:end="u_jtag_uart.irq">
         <altera:connection_parameter altera:parameter_name="irqNumber" altera:parameter_value="0"></altera:connection_parameter>
       </altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_jtag_avalon_master.clk_reset"></altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_jtag_uart.reset"></altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_f2sdram_address_span_extender.reset"></altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_m.reset"></altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_pio_in.reset"></altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_pio_out.reset"></altera:connection>
-      <altera:connection altera:kind="reset" altera:version="26.1" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_onchip_memory.reset1"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_jtag_avalon_master.clk_reset"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_jtag_uart.reset"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_f2sdram_address_span_extender.reset"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_m.reset"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_pio_in.reset"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_pio_out.reset"></altera:connection>
+      <altera:connection altera:kind="reset" altera:version="26.3" altera:start="u_niosv_reset.out_reset" altera:end="u_niosv_onchip_memory.reset1"></altera:connection>
     </altera:connections>
     <altera:interconnect_requirements></altera:interconnect_requirements>
     <altera:wire_level_connections></altera:wire_level_connections>
@@ -11794,20 +11794,20 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:busInterfaces>
           <ipxact:busInterface>
             <ipxact:name>u_f2sdram_address_span_extender.expanded_master</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
             <ipxact:master></ipxact:master>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_f2sdram_address_span_extender.cntl</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_f2sdram_address_span_extender.windowed_slave</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_jtag_avalon_master.master</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
             <ipxact:master>
               <ipxact:addressSpaceRef addressSpaceRef="u_jtag_avalon_master.master">
                 <ipxact:baseAddress>0x0005_0080</ipxact:baseAddress>
@@ -11816,15 +11816,15 @@ Altera and sold by Altera or its authorized distributors.-->
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_m.dm_agent</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_onchip_memory.s1</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_m.instruction_manager</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
             <ipxact:master>
               <ipxact:addressSpaceRef addressSpaceRef="u_niosv_m.instruction_manager">
                 <ipxact:baseAddress>0x0004_0000</ipxact:baseAddress>
@@ -11833,39 +11833,39 @@ Altera and sold by Altera or its authorized distributors.-->
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_jtag_uart.avalon_jtag_slave</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_f2sdram_address_span_extender.cntl</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_m.dm_agent</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_onchip_memory.s1</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_pio_in.s1</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_pio_out.s1</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_m.timer_sw_agent</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_f2sdram_address_span_extender.windowed_slave</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_niosv_m.data_manager</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
             <ipxact:master>
               <ipxact:addressSpaceRef addressSpaceRef="u_niosv_m.data_manager">
                 <ipxact:baseAddress>0x0005_0040</ipxact:baseAddress>

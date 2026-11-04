@@ -14,14 +14,14 @@ Altera and sold by Altera or its authorized distributors.-->
   <ipxact:vendor>Altera</ipxact:vendor>
   <ipxact:library>agilex_hps</ipxact:library>
   <ipxact:name>intel_agilex_5_soc_inst</ipxact:name>
-  <ipxact:version>14.0.0</ipxact:version>
+  <ipxact:version>14.1.0</ipxact:version>
   <ipxact:busInterfaces>
     <ipxact:busInterface>
       <ipxact:name>h2f_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -60,10 +60,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps2fpga_axi_clock</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -97,10 +97,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps2fpga_axi_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -129,10 +129,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps2fpga</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -464,6 +464,11 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>isTranslator</ipxact:displayName>
           <ipxact:value>false</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="isInterconnectIP" type="bit">
+          <ipxact:name>isInterconnectIP</ipxact:name>
+          <ipxact:displayName>isInterconnectIP</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="maximumOutstandingReads" type="longint">
           <ipxact:name>maximumOutstandingReads</ipxact:name>
           <ipxact:displayName>maximumOutstandingReads</ipxact:displayName>
@@ -549,14 +554,19 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>Issues FIXED bursts</ipxact:displayName>
           <ipxact:value>true</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="maximumBurstLength" type="longint">
+          <ipxact:name>maximumBurstLength</ipxact:name>
+          <ipxact:displayName>maximumBurstLength</ipxact:displayName>
+          <ipxact:value>256</ipxact:value>
+        </ipxact:parameter>
       </ipxact:parameters>
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>lwhps2fpga_axi_clock</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -590,10 +600,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>lwhps2fpga_axi_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -622,10 +632,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>lwhps2fpga</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -957,6 +967,11 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>isTranslator</ipxact:displayName>
           <ipxact:value>false</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="isInterconnectIP" type="bit">
+          <ipxact:name>isInterconnectIP</ipxact:name>
+          <ipxact:displayName>isInterconnectIP</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="maximumOutstandingReads" type="longint">
           <ipxact:name>maximumOutstandingReads</ipxact:name>
           <ipxact:displayName>maximumOutstandingReads</ipxact:displayName>
@@ -1042,14 +1057,19 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>Issues FIXED bursts</ipxact:displayName>
           <ipxact:value>true</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="maximumBurstLength" type="longint">
+          <ipxact:name>maximumBurstLength</ipxact:name>
+          <ipxact:displayName>maximumBurstLength</ipxact:displayName>
+          <ipxact:value>256</ipxact:value>
+        </ipxact:parameter>
       </ipxact:parameters>
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>emac0_i2c</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1107,10 +1127,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>emac2_app_rst</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1149,10 +1169,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>spim0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1242,10 +1262,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>spim0_sclk_out</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1289,10 +1309,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>uart1</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1398,10 +1418,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I2C1_scl_i</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1435,10 +1455,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I2C1_scl_oe</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1482,10 +1502,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I2C1</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1527,10 +1547,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I3C0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1620,10 +1640,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>h2f_warm_reset_handshake</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1665,10 +1685,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps_io</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2078,10 +2098,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_io</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2139,10 +2159,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>fpga2hps_interrupt_irq1</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2186,10 +2206,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>fpga2hps_interrupt_irq0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2233,10 +2253,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_pma_cpu_clk</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2280,10 +2300,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_refclk_p</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2327,10 +2347,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_refclk_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2374,10 +2394,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_rx_serial_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2421,10 +2441,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_rx_serial_p</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2468,10 +2488,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_tx_serial_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2515,10 +2535,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_tx_serial_p</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2562,10 +2582,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_reconfig_rst</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2604,10 +2624,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_reconfig_clk</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2651,10 +2671,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_reconfig_slave</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3016,10 +3036,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>f2sdram_axi_clock</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3053,10 +3073,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>f2sdram_axi_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3085,10 +3105,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>f2sdram</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3492,6 +3512,11 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>isTranslator</ipxact:displayName>
           <ipxact:value>false</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="isInterconnectIP" type="bit">
+          <ipxact:name>isInterconnectIP</ipxact:name>
+          <ipxact:displayName>isInterconnectIP</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="maximumOutstandingReads" type="longint">
           <ipxact:name>maximumOutstandingReads</ipxact:name>
           <ipxact:displayName>maximumOutstandingReads</ipxact:displayName>
@@ -3626,10 +3651,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>io96b0_to_hps</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -8537,7 +8562,7 @@ Altera and sold by Altera or its authorized distributors.-->
       <ipxact:vendor>Altera</ipxact:vendor>
       <ipxact:library>agilex_hps</ipxact:library>
       <ipxact:name>intel_agilex_5_soc</ipxact:name>
-      <ipxact:version>14.0.0</ipxact:version>
+      <ipxact:version>14.1.0</ipxact:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <ipxact:parameters>
@@ -10417,6 +10442,11 @@ Altera and sold by Altera or its authorized distributors.-->
    }
    element intel_agilex_5_soc_inst
    {
+      datum _originalVersion
+      {
+         value = "14.0.0";
+         type = "String";
+      }
       datum _sortIndex
       {
          value = "0";
@@ -10900,6 +10930,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -10966,6 +11000,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;entry&gt;
                         &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                         &lt;value&gt;true&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                        &lt;value&gt;256&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/parameterValueMap&gt;
             &lt;/parameters&gt;
@@ -11397,6 +11435,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -11463,6 +11505,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;entry&gt;
                         &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                         &lt;value&gt;true&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                        &lt;value&gt;256&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/parameterValueMap&gt;
             &lt;/parameters&gt;
@@ -13823,6 +13869,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;isTranslator&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;

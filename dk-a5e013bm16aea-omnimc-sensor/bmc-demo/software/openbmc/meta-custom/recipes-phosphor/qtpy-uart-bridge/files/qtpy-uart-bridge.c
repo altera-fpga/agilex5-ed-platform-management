@@ -107,6 +107,41 @@ struct mapping {
 static struct mapping mappings[MAX_MAPPINGS];
 static int mapping_count = 0;
 
+/* ------------------------------------------------------------------------- */
+/* Multi-line JSON packet mode (new QT Py firmware).                          */
+/*                                                                           */
+/* The QT Py mini-rack firmware streams a multi-line record every 100 ms,    */
+/* e.g.:                                                                      */
+/*                                                                           */
+/*     { "profile": "BoardManagementController",                             */
+/*       "heater": 32000,                                                    */
+/*       "messages": [                                                       */
+/*         "text": "Chassis Intrusion Detected",                            */
+/*         "text": "Fan Failed",                                            */
+/*     ] }                                                                    */
+/*                                                                           */
+/* This is NOT strict JSON (the "text" items are bare key:value pairs inside  */
+/* the array and there are trailing commas), so we parse it tolerantly with  */
+/* strstr/strtod rather than a JSON library. The "heater" value feeds the    */
+/* same mapping table as the legacy "Heater:" token; each "text" string is a */
+/* switch-triggered fault that we post to the OpenBMC event log (Redfish).   */
+/*                                                                           */
+/* Packet start  = a line whose first non-space char is '{'.                 */
+/* Packet end    = a line whose first non-space char is ']'.                 */
+/* The legacy single-line "KEY:VALUE" format still works unchanged.          */
+/* ------------------------------------------------------------------------- */
+
+#define MAX_MSGS 8
+#define MSG_LEN 128
+#define PROFILE_LEN 64
+
+static int in_packet = 0; /* currently inside a { ... ] } record */
+static char cur_profile[PROFILE_LEN] = ""; /* "profile" from the current packet */
+static char active_msgs[MAX_MSGS][MSG_LEN]; /* "text" faults seen in this packet */
+static int active_count = 0;
+static char prev_msgs[MAX_MSGS][MSG_LEN]; /* faults active in the previous packet */
+static int prev_count = 0;
+
 /* Raw CircuitPython 16-bit ADC count -> percent (0-65535 -> 0-100). */
 #define ADC16_TO_PCT (100.0 / 65535.0)
 
@@ -294,10 +329,17 @@ static void write_json(const char *raw)
     if (!f)
         return;
     fprintf(f, "{\"source\":\"qtpy\"");
+    if (cur_profile[0])
+        fprintf(f, ",\"profile\":\"%s\"", cur_profile);
     for (int i = 0; i < mapping_count; i++) {
         if (mappings[i].seen)
             fprintf(f, ",\"%s\":%.3f", mappings[i].token, mappings[i].value);
     }
+    /* Active fault strings from the current packet (empty array when none). */
+    fprintf(f, ",\"messages\":[");
+    for (int i = 0; i < active_count; i++)
+        fprintf(f, "%s\"%s\"", i ? "," : "", active_msgs[i]);
+    fprintf(f, "]");
     /* Echo the raw line (truncated, quotes stripped) for debugging. */
     char safe[160];
     size_t j = 0;
@@ -378,6 +420,173 @@ static void publish_dirty(void)
             mappings[i].dirty = 0;
         }
     }
+}
+
+/* ------------------------------------------------------------------------- */
+/* JSON packet parsing + fault-alert posting.                                 */
+/* ------------------------------------------------------------------------- */
+
+/* QTPY_DRYRUN=1 prints parsed alerts to stdout instead of calling sd-bus, for
+ * host/loopback testing with no system bus. Cached on first use. */
+static int alert_dryrun(void)
+{
+    static int v = -1;
+    if (v < 0) {
+        const char *e = getenv("QTPY_DRYRUN");
+        v = (e && *e && strcmp(e, "0") != 0) ? 1 : 0;
+    }
+    return v;
+}
+
+/* Extract the number following "key": on a JSON line (e.g. "heater": 32000). */
+static int json_number(const char *line, const char *key, double *out)
+{
+    const char *k = strstr(line, key);
+    if (!k)
+        return 0;
+    const char *colon = strchr(k, ':');
+    if (!colon)
+        return 0;
+    return parse_num(colon + 1, out);
+}
+
+/* Extract the quoted string value following "key": on a JSON line
+ * (e.g. "text": "Fan Failed" -> Fan Failed). Returns 1 on success. */
+static int json_string(const char *line, const char *key, char *out, size_t outsz)
+{
+    const char *k = strstr(line, key);
+    if (!k)
+        return 0;
+    const char *colon = strchr(k, ':');
+    if (!colon)
+        return 0;
+    const char *q1 = strchr(colon, '"');
+    if (!q1)
+        return 0;
+    const char *q2 = strchr(q1 + 1, '"');
+    if (!q2)
+        return 0;
+    size_t n = (size_t)(q2 - (q1 + 1));
+    if (n >= outsz)
+        n = outsz - 1;
+    memcpy(out, q1 + 1, n);
+    out[n] = '\0';
+    return 1;
+}
+
+/* Post one fault to the OpenBMC logging service -> Redfish EventLog (surfaced by
+ * both the stock bmcweb WebUI and the custom dashboard). assert=1 logs the fault
+ * at Error severity; assert=0 logs an Informational "cleared" note. Best-effort:
+ * failures are non-fatal (the bus may be absent during host/loopback testing). */
+static void post_alert(const char *msg, int assert)
+{
+    char full[256];
+    const char *src = cur_profile[0] ? cur_profile : "SensorBoard";
+    if (assert)
+        snprintf(full, sizeof(full), "%s: %s", src, msg);
+    else
+        snprintf(full, sizeof(full), "%s: %s (cleared)", src, msg);
+
+    if (alert_dryrun()) {
+        printf("qtpy: ALERT[%s] %s\n", assert ? "SET" : "CLR", full);
+        return;
+    }
+
+    if (!bus || sd_bus_is_open(bus) <= 0) {
+        if (connect_bus() < 0)
+            return;
+    }
+    const char *level = assert ? "xyz.openbmc_project.Logging.Entry.Level.Error" :
+                                 "xyz.openbmc_project.Logging.Entry.Level.Informational";
+    sd_bus_error err = SD_BUS_ERROR_NULL;
+    int r = sd_bus_call_method(bus, "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging",
+                               "xyz.openbmc_project.Logging.Create", "Create", &err, NULL, "ssa{ss}", full, level, 0);
+    if (r < 0) {
+        static time_t last_err = 0;
+        time_t now = time(NULL);
+        if (now != last_err) {
+            last_err = now;
+            fprintf(stderr, "qtpy: log Create failed: %s\n", err.message ? err.message : strerror(-r));
+        }
+        /* Drop a likely-stale bus so the next publish/alert reconnects fresh. */
+        sd_bus_flush_close_unref(bus);
+        bus = NULL;
+    }
+    sd_bus_error_free(&err);
+}
+
+/* Diff the current packet's faults against the previous packet and emit exactly
+ * one event per edge: a held switch logs once (not at 10 Hz), and releasing it
+ * logs a single "cleared". */
+static void finalize_packet(void)
+{
+    for (int i = 0; i < active_count; i++) {
+        int found = 0;
+        for (int j = 0; j < prev_count; j++)
+            if (strcmp(active_msgs[i], prev_msgs[j]) == 0) {
+                found = 1;
+                break;
+            }
+        if (!found)
+            post_alert(active_msgs[i], 1);
+    }
+    for (int j = 0; j < prev_count; j++) {
+        int found = 0;
+        for (int i = 0; i < active_count; i++)
+            if (strcmp(prev_msgs[j], active_msgs[i]) == 0) {
+                found = 1;
+                break;
+            }
+        if (!found)
+            post_alert(prev_msgs[j], 0);
+    }
+    memcpy(prev_msgs, active_msgs, sizeof(prev_msgs));
+    prev_count = active_count;
+}
+
+/* Dispatch one received line: JSON packet mode (new firmware) or legacy
+ * single-line KEY:VALUE (old firmware / loopback). `line` is mutated by the
+ * legacy tokenizer; `raw` is the untouched copy used for JSON scans + logging. */
+static void process_record(char *line, const char *raw)
+{
+    const char *p = raw;
+    while (*p == ' ' || *p == '\t')
+        p++;
+
+    if (*p == '{') {
+        /* Start of a new packet: reset per-packet state, grab profile+heater. */
+        in_packet = 1;
+        active_count = 0;
+        cur_profile[0] = '\0';
+        json_string(raw, "\"profile\"", cur_profile, sizeof(cur_profile));
+        double h;
+        if (json_number(raw, "\"heater\"", &h))
+            apply_kv("HEATER", h);
+        return;
+    }
+
+    if (in_packet) {
+        if (*p == ']') {
+            /* End of packet: publish heater, dump JSON, edge-diff the faults. */
+            write_json(raw);
+            publish_dirty();
+            finalize_packet();
+            in_packet = 0;
+            return;
+        }
+        double h;
+        if (json_number(raw, "\"heater\"", &h))
+            apply_kv("HEATER", h);
+        char msg[MSG_LEN];
+        if (json_string(raw, "\"text\"", msg, sizeof(msg)) && active_count < MAX_MSGS)
+            snprintf(active_msgs[active_count++], MSG_LEN, "%s", msg);
+        return;
+    }
+
+    /* Legacy single-line format. */
+    parse_line(line);
+    write_json(raw);
+    publish_dirty();
 }
 
 int main(int argc, char **argv)
@@ -461,9 +670,7 @@ int main(int argc, char **argv)
                 line[len] = '\0';
                 char raw[256];
                 memcpy(raw, line, len + 1);
-                parse_line(line);
-                write_json(raw);
-                publish_dirty();
+                process_record(line, raw);
                 lines++;
                 time_t now = time(NULL);
                 if (now != last_log) { /* throttle journal to ~1 Hz */

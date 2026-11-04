@@ -1078,7 +1078,7 @@ Altera and sold by Altera or its authorized distributors.-->
     &lt;/boundary&gt;
     &lt;originalModuleInfo&gt;
         &lt;className&gt;emif_io96b_hps&lt;/className&gt;
-        &lt;version&gt;5.0.0&lt;/version&gt;
+        &lt;version&gt;5.1.0&lt;/version&gt;
         &lt;displayName&gt;External Memory Interfaces for HPS IP&lt;/displayName&gt;
     &lt;/originalModuleInfo&gt;
     &lt;systemInfoParameterDescriptors&gt;
@@ -2575,6 +2575,10 @@ Altera and sold by Altera or its authorized distributors.-->
                             &lt;value&gt;false&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
+                            &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                            &lt;value&gt;false&lt;/value&gt;
+                        &lt;/entry&gt;
+                        &lt;entry&gt;
                             &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                             &lt;value&gt;1&lt;/value&gt;
                         &lt;/entry&gt;
@@ -2641,6 +2645,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;entry&gt;
                             &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                             &lt;value&gt;true&lt;/value&gt;
+                        &lt;/entry&gt;
+                        &lt;entry&gt;
+                            &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                            &lt;value&gt;256&lt;/value&gt;
                         &lt;/entry&gt;
                     &lt;/parameterValueMap&gt;
                 &lt;/parameters&gt;
@@ -3072,6 +3080,10 @@ Altera and sold by Altera or its authorized distributors.-->
                             &lt;value&gt;false&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
+                            &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                            &lt;value&gt;false&lt;/value&gt;
+                        &lt;/entry&gt;
+                        &lt;entry&gt;
                             &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                             &lt;value&gt;1&lt;/value&gt;
                         &lt;/entry&gt;
@@ -3138,6 +3150,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;entry&gt;
                             &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                             &lt;value&gt;true&lt;/value&gt;
+                        &lt;/entry&gt;
+                        &lt;entry&gt;
+                            &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                            &lt;value&gt;256&lt;/value&gt;
                         &lt;/entry&gt;
                     &lt;/parameterValueMap&gt;
                 &lt;/parameters&gt;
@@ -5501,6 +5517,10 @@ Altera and sold by Altera or its authorized distributors.-->
                             &lt;value&gt;false&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
+                            &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                            &lt;value&gt;false&lt;/value&gt;
+                        &lt;/entry&gt;
+                        &lt;entry&gt;
                             &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                             &lt;value&gt;1&lt;/value&gt;
                         &lt;/entry&gt;
@@ -6187,7 +6207,7 @@ Altera and sold by Altera or its authorized distributors.-->
     &lt;/boundary&gt;
     &lt;originalModuleInfo&gt;
         &lt;className&gt;intel_agilex_5_soc&lt;/className&gt;
-        &lt;version&gt;14.0.0&lt;/version&gt;
+        &lt;version&gt;14.1.0&lt;/version&gt;
         &lt;displayName&gt;Hard Processor System IP&lt;/displayName&gt;
     &lt;/originalModuleInfo&gt;
     &lt;systemInfoParameterDescriptors&gt;
@@ -6780,6 +6800,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -6846,6 +6870,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;entry&gt;
                         &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                         &lt;value&gt;true&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                        &lt;value&gt;256&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/parameterValueMap&gt;
             &lt;/parameters&gt;
@@ -7277,6 +7305,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -7343,6 +7375,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;entry&gt;
                         &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                         &lt;value&gt;true&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                        &lt;value&gt;256&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/parameterValueMap&gt;
             &lt;/parameters&gt;
@@ -9706,6 +9742,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -10487,7 +10527,7 @@ Altera and sold by Altera or its authorized distributors.-->
       </altera:module>
     </altera:modules>
     <altera:connections>
-      <altera:connection altera:kind="conduit" altera:version="26.1" altera:start="u_agilex_hps.io96b0_to_hps" altera:end="emif_hps.io96b0_to_hps">
+      <altera:connection altera:kind="conduit" altera:version="26.3" altera:start="u_agilex_hps.io96b0_to_hps" altera:end="emif_hps.io96b0_to_hps">
         <altera:connection_parameter altera:parameter_name="endPort" altera:parameter_value=""></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="endPortLSB" altera:parameter_value="0"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="startPort" altera:parameter_value=""></altera:connection_parameter>
@@ -10550,12 +10590,12 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:busInterfaces>
           <ipxact:busInterface>
             <ipxact:name>u_agilex_hps.hps2fpga</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
             <ipxact:master></ipxact:master>
           </ipxact:busInterface>
           <ipxact:busInterface>
             <ipxact:name>u_agilex_hps.lwhps2fpga</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+            <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
             <ipxact:master></ipxact:master>
           </ipxact:busInterface>
         </ipxact:busInterfaces>

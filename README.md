@@ -29,7 +29,7 @@ This is only applicable if the feature is enabled.
 - Software-selectable I3C / EMAC0 I2C on the Altera Sensor Board SDA/SCL pads
 
 ## Dependency
-* Altera Quartus Prime 26.1.1
+* Altera Quartus Prime 26.3
 * Supported Altera Development Kit
   - Agilex 5 FPGA E-Series 013B Development Kit DK-A5E013BM16AEA
   - Agilex 3 FPGA and SoC C-Series Development Kit DK-A3W135BM16AEA
@@ -42,13 +42,13 @@ This is only applicable if the feature is enabled.
 
 Several tools are required to be in the path.
 
-* Altera Quartus Prime 26.1.1
+* Altera Quartus Prime 26.3
 * Python 3.11.5 (only required when using command line to build)
 
 ### Example Setup for Altera Quartus Prime tools
 This is recommended, when using command line to build.
 ```bash
-export QUARTUS_ROOTDIR=~/alteraFPGA_pro/26.1.1/quartus
+export QUARTUS_ROOTDIR=~/alteraFPGA_pro/26.3/quartus
 ```
 Note: Adapt the path above to where Quartus Prime is installed.
 
@@ -99,4 +99,3 @@ Platform index: [dk-a3w135bm16aea-omnimc-sensor](dk-a3w135bm16aea-omnimc-sensor/
 
 * [dk-a3w135bm16aea-omnimc-sensor/bmc-demo](dk-a3w135bm16aea-omnimc-sensor/bmc-demo/README.md) :
   HPS OmniMC / OpenBMC System Example Design for the A3W135 Development Kit with Altera Sensor Board.
-

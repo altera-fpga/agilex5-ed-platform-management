@@ -14,14 +14,14 @@ Altera and sold by Altera or its authorized distributors.-->
   <ipxact:vendor>Altera</ipxact:vendor>
   <ipxact:library>agilex_hps</ipxact:library>
   <ipxact:name>intel_agilex_5_soc_inst</ipxact:name>
-  <ipxact:version>14.0.0</ipxact:version>
+  <ipxact:version>14.1.0</ipxact:version>
   <ipxact:busInterfaces>
     <ipxact:busInterface>
       <ipxact:name>h2f_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -60,10 +60,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps2fpga_axi_clock</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -97,10 +97,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps2fpga_axi_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -129,10 +129,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps2fpga</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -464,6 +464,11 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>isTranslator</ipxact:displayName>
           <ipxact:value>false</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="isInterconnectIP" type="bit">
+          <ipxact:name>isInterconnectIP</ipxact:name>
+          <ipxact:displayName>isInterconnectIP</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="maximumOutstandingReads" type="longint">
           <ipxact:name>maximumOutstandingReads</ipxact:name>
           <ipxact:displayName>maximumOutstandingReads</ipxact:displayName>
@@ -549,14 +554,19 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>Issues FIXED bursts</ipxact:displayName>
           <ipxact:value>true</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="maximumBurstLength" type="longint">
+          <ipxact:name>maximumBurstLength</ipxact:name>
+          <ipxact:displayName>maximumBurstLength</ipxact:displayName>
+          <ipxact:value>256</ipxact:value>
+        </ipxact:parameter>
       </ipxact:parameters>
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>lwhps2fpga_axi_clock</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -590,10 +600,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>lwhps2fpga_axi_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -622,10 +632,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>lwhps2fpga</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -957,6 +967,11 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>isTranslator</ipxact:displayName>
           <ipxact:value>false</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="isInterconnectIP" type="bit">
+          <ipxact:name>isInterconnectIP</ipxact:name>
+          <ipxact:displayName>isInterconnectIP</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="maximumOutstandingReads" type="longint">
           <ipxact:name>maximumOutstandingReads</ipxact:name>
           <ipxact:displayName>maximumOutstandingReads</ipxact:displayName>
@@ -1042,14 +1057,19 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>Issues FIXED bursts</ipxact:displayName>
           <ipxact:value>true</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="maximumBurstLength" type="longint">
+          <ipxact:name>maximumBurstLength</ipxact:name>
+          <ipxact:displayName>maximumBurstLength</ipxact:displayName>
+          <ipxact:value>256</ipxact:value>
+        </ipxact:parameter>
       </ipxact:parameters>
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>emac0_i2c</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1107,10 +1127,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>emac2_app_rst</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1149,10 +1169,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>spim0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1242,10 +1262,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>spim0_sclk_out</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1289,10 +1309,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>uart1</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1398,10 +1418,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I2C1_scl_i</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1435,10 +1455,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I2C1_scl_oe</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1482,10 +1502,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I2C1</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1527,10 +1547,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>I3C0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1620,10 +1640,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>h2f_warm_reset_handshake</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -1665,10 +1685,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>hps_io</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2078,10 +2098,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_io</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2139,10 +2159,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>fpga2hps_interrupt_irq1</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2186,10 +2206,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>fpga2hps_interrupt_irq0</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="interrupt" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2233,10 +2253,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_pma_cpu_clk</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2280,10 +2300,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_refclk_p</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2327,10 +2347,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_refclk_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2374,10 +2394,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_rx_serial_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2421,10 +2441,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_rx_serial_p</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2468,10 +2488,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_tx_serial_n</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2515,10 +2535,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_tx_serial_p</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2562,10 +2582,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_reconfig_rst</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2604,10 +2624,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_reconfig_clk</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -2651,10 +2671,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>usb31_phy_reconfig_slave</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="avalon" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="avalon" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3016,10 +3036,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>f2sdram_axi_clock</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3053,10 +3073,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>f2sdram_axi_reset</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3085,10 +3105,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>f2sdram</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="axi4" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -3492,6 +3512,11 @@ Altera and sold by Altera or its authorized distributors.-->
           <ipxact:displayName>isTranslator</ipxact:displayName>
           <ipxact:value>false</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="isInterconnectIP" type="bit">
+          <ipxact:name>isInterconnectIP</ipxact:name>
+          <ipxact:displayName>isInterconnectIP</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="maximumOutstandingReads" type="longint">
           <ipxact:name>maximumOutstandingReads</ipxact:name>
           <ipxact:displayName>maximumOutstandingReads</ipxact:displayName>
@@ -3626,10 +3651,10 @@ Altera and sold by Altera or its authorized distributors.-->
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>io96b0_to_hps</ipxact:name>
-      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:busType>
+      <ipxact:busType vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="conduit" version="26.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -4165,7 +4190,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:fileSetRef>
           <ipxact:localName>QUARTUS_SYNTH</ipxact:localName>
         </ipxact:fileSetRef>
-        <ipxact:parameters></ipxact:parameters>
       </ipxact:componentInstantiation>
     </ipxact:instantiations>
     <ipxact:ports>
@@ -4173,7 +4197,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>h2f_reset_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4186,7 +4209,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_axi_clock_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4199,7 +4221,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_axi_reset_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4302,7 +4323,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_awlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4351,7 +4371,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_awvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4364,7 +4383,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_awready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4413,7 +4431,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_wlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4426,7 +4443,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_wvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4439,7 +4455,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_wready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4488,7 +4503,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_bvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4501,7 +4515,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_bready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4604,7 +4617,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_arlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4653,7 +4665,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_arvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4666,7 +4677,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_arready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4733,7 +4743,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_rlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4746,7 +4755,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_rvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4759,7 +4767,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps2fpga_rready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4772,7 +4779,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_axi_clock_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4785,7 +4791,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_axi_reset_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4888,7 +4893,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_awlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4937,7 +4941,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_awvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4950,7 +4953,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_awready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -4999,7 +5001,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_wlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5012,7 +5013,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_wvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5025,7 +5025,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_wready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5074,7 +5073,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_bvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5087,7 +5085,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_bready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5190,7 +5187,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_arlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5239,7 +5235,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_arvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5252,7 +5247,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_arready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5319,7 +5313,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_rlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5332,7 +5325,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_rvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5345,7 +5337,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>lwhps2fpga_rready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5358,7 +5349,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>emac0_i2c_mac_scl_i</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5371,7 +5361,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>emac0_i2c_mac_scl_oe</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5384,7 +5373,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>emac0_i2c_mac_sda_i</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5397,7 +5385,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>emac0_i2c_mac_sda_oe</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5410,7 +5397,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>emac2_app_rst_reset_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5423,7 +5409,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_miso_i</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5436,7 +5421,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_mosi_o</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5449,7 +5433,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_mosi_oe</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5462,7 +5445,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_ss_in_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5475,7 +5457,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_ss0_n_o</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5488,7 +5469,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_ss1_n_o</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5501,7 +5481,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_ss2_n_o</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5514,7 +5493,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_ss3_n_o</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5527,7 +5505,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>spim0_sclk_out_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5540,7 +5517,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_cts_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5553,7 +5529,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_dcd_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5566,7 +5541,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_dsr_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5579,7 +5553,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_dtr_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5592,7 +5565,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_out1_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5605,7 +5577,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_out2_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5618,7 +5589,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_ri_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5631,7 +5601,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_rts_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5644,7 +5613,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_rx</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5657,7 +5625,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>uart1_tx</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5670,7 +5637,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I2C1_scl_i_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5683,7 +5649,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I2C1_scl_oe_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5696,7 +5661,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I2C1_sda_i</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5709,7 +5673,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I2C1_sda_oe</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5722,7 +5685,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_scl_in_a</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5735,7 +5697,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_scl_oe</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5748,7 +5709,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_sda_in_a</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5761,7 +5721,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_sda_oe</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5774,7 +5733,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_scl_out</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5787,7 +5745,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_sda_out</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5800,7 +5757,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_scl_pullup_en</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5813,7 +5769,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>I3C0_sda_pullup_en</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5826,7 +5781,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>h2f_warm_reset_handshake_reset_req</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5839,7 +5793,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>h2f_warm_reset_handshake_reset_ack</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5852,7 +5805,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_hps_osc_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5865,7 +5817,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_sdmmc_data0</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5878,7 +5829,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_sdmmc_data1</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5891,7 +5841,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_sdmmc_cclk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5904,7 +5853,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_sdmmc_data2</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5917,7 +5865,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_sdmmc_data3</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5930,7 +5877,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_sdmmc_cmd</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5943,7 +5889,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5956,7 +5901,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_stp</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5969,7 +5913,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_dir</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5982,7 +5925,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data0</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -5995,7 +5937,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data1</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6008,7 +5949,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_nxt</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6021,7 +5961,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data2</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6034,7 +5973,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data3</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6047,7 +5985,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data4</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6060,7 +5997,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data5</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6073,7 +6009,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data6</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6086,7 +6021,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_usb1_data7</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6099,7 +6033,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_tx_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6112,7 +6045,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_tx_ctl</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6125,7 +6057,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_rx_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6138,7 +6069,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_rx_ctl</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6151,7 +6081,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_txd0</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6164,7 +6093,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_txd1</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6177,7 +6105,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_rxd0</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6190,7 +6117,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_rxd1</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6203,7 +6129,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_txd2</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6216,7 +6141,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_txd3</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6229,7 +6153,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_rxd2</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6242,7 +6165,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_emac2_rxd3</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6255,7 +6177,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_mdio2_mdio</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6268,7 +6189,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_mdio2_mdc</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6281,7 +6201,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_uart0_tx</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6294,7 +6213,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_uart0_rx</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6307,7 +6225,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_i2c0_sda</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6320,7 +6237,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_i2c0_scl</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6333,7 +6249,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_i3c1_sda</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6346,7 +6261,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_i3c1_scl</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6359,7 +6273,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_jtag_tck</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6372,7 +6285,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_jtag_tms</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6385,7 +6297,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_jtag_tdo</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6398,7 +6309,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_jtag_tdi</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6411,7 +6321,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_gpio0</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6424,7 +6333,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_gpio1</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6437,7 +6345,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_gpio11</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6450,7 +6357,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_gpio27</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6463,7 +6369,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>hps_io_gpio28</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>inout</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6476,7 +6381,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_io_vbus_det</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6489,7 +6393,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_io_flt_bar</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6520,7 +6423,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_io_usb31_id</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6569,7 +6471,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_pma_cpu_clk_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6582,7 +6483,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_refclk_p_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6595,7 +6495,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_refclk_n_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6608,7 +6507,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_rx_serial_n_i_rx_serial_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6621,7 +6519,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_rx_serial_p_i_rx_serial_p</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6634,7 +6531,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_tx_serial_n_o_tx_serial_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6647,7 +6543,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_tx_serial_p_o_tx_serial_p</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6660,7 +6555,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_reconfig_rst_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6673,7 +6567,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_reconfig_clk_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6722,7 +6615,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_reconfig_slave_readdatavalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6735,7 +6627,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_reconfig_slave_read</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6748,7 +6639,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_reconfig_slave_write</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6797,7 +6687,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>usb31_phy_reconfig_slave_waitrequest</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6810,7 +6699,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_axi_clock_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6823,7 +6711,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_axi_reset_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6926,7 +6813,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_arlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -6975,7 +6861,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_arready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7006,7 +6891,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_arvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7109,7 +6993,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_awlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7158,7 +7041,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_awready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7189,7 +7071,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_awvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7220,7 +7101,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_bready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7251,7 +7131,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_bvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7300,7 +7179,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_rlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7313,7 +7191,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_rready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7344,7 +7221,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_rvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7375,7 +7251,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_wlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7388,7 +7263,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_wready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7419,7 +7293,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>f2sdram_wvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7558,7 +7431,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7571,7 +7443,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_reset_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7584,7 +7455,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_arready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7597,7 +7467,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_awready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7628,7 +7497,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_bvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7677,7 +7545,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_rvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7690,7 +7557,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_wready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7721,7 +7587,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_arvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7752,7 +7617,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_awvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7765,7 +7629,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_bready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7778,7 +7641,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_rready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7827,7 +7689,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_ch0_axil_wvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7876,7 +7737,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7889,7 +7749,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_reset_n</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7902,7 +7761,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_arready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7915,7 +7773,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_awready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -7964,7 +7821,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_bvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8013,7 +7869,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_rlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8062,7 +7917,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_rvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8075,7 +7929,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_wready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8160,7 +8013,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_arlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8227,7 +8079,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_arvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8312,7 +8163,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_awlock</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8379,7 +8229,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_awvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8392,7 +8241,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_bready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8405,7 +8253,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_rready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8436,7 +8283,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_wlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8485,7 +8331,6 @@ Altera and sold by Altera or its authorized distributors.-->
         <ipxact:name>io96b0_to_hps_axi4_ch0_wvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -8537,7 +8382,7 @@ Altera and sold by Altera or its authorized distributors.-->
       <ipxact:vendor>Altera</ipxact:vendor>
       <ipxact:library>agilex_hps</ipxact:library>
       <ipxact:name>intel_agilex_5_soc</ipxact:name>
-      <ipxact:version>14.0.0</ipxact:version>
+      <ipxact:version>14.1.0</ipxact:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <ipxact:parameters>
@@ -10417,6 +10262,11 @@ Altera and sold by Altera or its authorized distributors.-->
    }
    element intel_agilex_5_soc_inst
    {
+      datum _originalVersion
+      {
+         value = "14.0.0";
+         type = "String";
+      }
       datum _sortIndex
       {
          value = "0";
@@ -10900,6 +10750,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -10966,6 +10820,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;entry&gt;
                         &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                         &lt;value&gt;true&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                        &lt;value&gt;256&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/parameterValueMap&gt;
             &lt;/parameters&gt;
@@ -11397,6 +11255,10 @@ Altera and sold by Altera or its authorized distributors.-->
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;maximumOutstandingReads&lt;/key&gt;
                         &lt;value&gt;1&lt;/value&gt;
                     &lt;/entry&gt;
@@ -11463,6 +11325,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;entry&gt;
                         &lt;key&gt;issuesFIXEDBursts&lt;/key&gt;
                         &lt;value&gt;true&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;maximumBurstLength&lt;/key&gt;
+                        &lt;value&gt;256&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/parameterValueMap&gt;
             &lt;/parameters&gt;
@@ -13823,6 +13689,10 @@ Altera and sold by Altera or its authorized distributors.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;isTranslator&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;isInterconnectIP&lt;/key&gt;
                         &lt;value&gt;false&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;

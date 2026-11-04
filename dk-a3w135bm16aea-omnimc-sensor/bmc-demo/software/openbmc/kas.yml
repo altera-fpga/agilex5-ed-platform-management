@@ -23,10 +23,10 @@ repos:
       meta-phosphor:
 
   # Altera BSP — U-Boot, ATF, and Linux kernel for Agilex HPS
-  # Pinned to public rel/26.1.1 tag (workaround: SDM/XCVR temp read issue in newer BSP)
+  # Pinned to public 26.3 baseline tag (QPDS26.3_REL_BASELINE_PR).
   meta-altera-fpga:
     url: https://github.com/altera-fpga/meta-altera-fpga.git
-    tag: QPDS26.1.1_REL_GSRD_PR
+    tag: QPDS26.3_REL_BASELINE_PR
     layers:
       meta-altera-bsp:
 

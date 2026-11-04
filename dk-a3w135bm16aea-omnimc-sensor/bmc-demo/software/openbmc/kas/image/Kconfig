@@ -6,5 +6,11 @@ config OBMC_PHOSPHOR_IMAGE
 	help
 	  Build the OpenBMC phosphor image (obmc-phosphor-image). This is the
 	  standard OpenBMC image providing Redfish, IPMI, and the bmcweb UI.
+	  It is the only supported image target for this design.
+
+# KAS include logic — obmc-phosphor-image is the only supported target.
+config KAS_INCLUDE_IMAGE
+	string
+	default "kas/image/obmc-phosphor-image.yaml"
 
 endmenu

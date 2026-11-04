@@ -35,3 +35,5 @@ config FPGA_RBF_FILE
       Specify the .rbf file for FPGA programming. It's expected that the RBF file is located under meta-custom/recipes-fpga/fpga-bitstream/files/.
 
 endmenu
+
+source "kas/image/Kconfig"
